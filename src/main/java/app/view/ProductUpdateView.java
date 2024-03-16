@@ -7,20 +7,20 @@ import java.util.Map;
 import java.util.Scanner;
 
 @Component
-public class ContactUpdateView {
+public class ProductUpdateView {
 
     public Map<String, String> getData() {
         Map<String, String> map = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-        String title = "Input first name: ";
+        String title = "Input name: ";
         System.out.print(title);
-        map.put("firstName", scanner.nextLine().trim());
-        title = "Input last name: ";
+        map.put("name", scanner.nextLine().trim());
+        title = "Input quota: ";
         System.out.print(title);
-        map.put("lastName", scanner.nextLine().trim());
-        title = "Input phone in format xxx xxx-xxxx: ";
+        map.put("quota", scanner.nextLine().trim());
+        title = "Input price in format xxx xxx-xxxx: ";
         System.out.print(title);
-        map.put("phone", scanner.nextLine().trim());
+        map.put("price", scanner.nextLine().trim());
         title = "Input id: ";
         System.out.print(title);
         map.put("id", scanner.nextLine().trim());

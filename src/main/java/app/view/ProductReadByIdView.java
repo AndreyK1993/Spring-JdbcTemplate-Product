@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class ContactReadByIdView {
+public class ProductReadByIdView {
 
     public String getData() {
         Scanner scanner = new Scanner(System.in);

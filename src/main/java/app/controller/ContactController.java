@@ -16,15 +16,15 @@ public class ContactController {
     @Autowired
     AppView menuView;
     @Autowired
-    ContactCreateView createView;
+    ProductCreateView createView;
     @Autowired
-    ContactReadView readView;
+    ProductReadView readView;
     @Autowired
-    ContactReadByIdView readByIdView;
+    ProductReadByIdView readByIdView;
     @Autowired
-    ContactUpdateView updateView;
+    ProductUpdateView updateView;
     @Autowired
-    ContactDeleteView deleteView;
+    ProductDeleteView deleteView;
     @Autowired
     ContactService service;
 

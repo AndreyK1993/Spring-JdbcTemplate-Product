@@ -26,11 +26,11 @@ public class AppView {
         System.out.print("""
                 
                 ______ MENU ___________
-                1 - Create contact.
-                2 - View all contacts.
-                3 - View contact by id.
-                4 - Update contact.
-                5 - Delete contact.
+                1 - Create product.
+                2 - View all products.
+                3 - View product by id.
+                4 - Update product.
+                5 - Delete product.
                 0 - Close the App.
                 """);
         System.out.print("Input option: ");
