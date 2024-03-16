@@ -66,19 +66,19 @@ public class Product {
         this.name = name;
     }
 
-    public String getQuota() {
+    public Double getQuota() {
         return quota;
     }
 
-    public void setQuota(String quota) {
+    public void setQuota(Double quota) {
         this.quota = quota;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
