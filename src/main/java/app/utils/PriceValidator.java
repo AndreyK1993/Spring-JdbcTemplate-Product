@@ -1,9 +1,9 @@
 package app.utils;
 
-// Валидация телефона
+// Валидация цены
 public class PriceValidator {
 
-    // Regex for phone number xxx xxx-xxxx
+    // Regex for price #.##
     private final static String PRICE_RGX = "\\d+(\\.\\d{1,2})?";
 
 
@@ -11,6 +11,6 @@ public class PriceValidator {
     }
 
     public static boolean isPriceValid(Double price) {
-        return price.isEmpty() || !phone.matches(PHONE_RGX);
+        return price == null || !String.valueOf(price).matches(PRICE_RGX);
     }
 }

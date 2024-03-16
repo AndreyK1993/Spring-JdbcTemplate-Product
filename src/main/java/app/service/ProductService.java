@@ -116,7 +116,7 @@ public class ProductService {
     private void validateData(Product product) {
         if (product.getName().isEmpty())
             errors.put("first name", Constants.INPUT_REQ_MSG);
-        if (product.getQuota().isEmpty())
+        if (product.getQuota().isNaN())
             errors.put("last name", Constants.INPUT_REQ_MSG);
         if (PriceValidator.isPriceValid(product.getPrice()))
             errors.put("phone", Constants.PRICE_ERR_MSG);

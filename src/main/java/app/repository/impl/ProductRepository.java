@@ -61,7 +61,7 @@ public class ProductRepository implements AppRepository<Product> {
         if (optional.isEmpty()) return false;
         else {
             String sql = "UPDATE products SET name = ?, quota = ?, price = ? WHERE id = ?";
-            return jdbcTemplate.update(sql, product.getName(), product.getQuota(), contact.getPrice(),
+            return jdbcTemplate.update(sql, product.getName(), product.getQuota(), product.getPrice(),
                     product.getId()) > 0;
         }
     }

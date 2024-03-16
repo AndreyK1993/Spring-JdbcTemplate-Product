@@ -14,10 +14,10 @@ public class ProductCreateView {
         String name = scanner.nextLine().trim();
         title = "Input quota: ";
         System.out.print(title);
-        Double quota = scanner.nextLine().trim();
-        title = "Input price in format xxx xxx-xxxx: ";
+        String quota = scanner.nextLine().trim();
+        title = "Input price in format #.##: ";
         System.out.print(title);
-        Double price = scanner.nextLine().trim();
+        String price = scanner.nextLine().trim();
         return new String[]{name, quota, price};
     }
 

@@ -18,7 +18,7 @@ public class ProductUpdateView {
         title = "Input quota: ";
         System.out.print(title);
         map.put("quota", scanner.nextLine().trim());
-        title = "Input price in format xxx xxx-xxxx: ";
+        title = "Input price in format #.##: ";
         System.out.print(title);
         map.put("price", scanner.nextLine().trim());
         title = "Input id: ";

@@ -20,7 +20,7 @@ import java.util.Objects;
 @Configuration
 // @ComponentScan використовується для вказівки базових пакетів
 // для сканування компонентів.
-@ComponentScan("org.example.app")
+@ComponentScan("app")
 // @PropertySource забезпечує механізм додавання
 // PropertySource в Spring Environment для використання
 // у поєднанні з класами @Configuration.

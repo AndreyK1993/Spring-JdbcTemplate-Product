@@ -43,7 +43,7 @@ public class ProductController {
 
     public void create() {
         String[] data = createView.getData();
-        Product product = new Product(data[0], data[1], data[2]);
+        Product product = new Product(data[0], Double.parseDouble(data[1]), Double.parseDouble(data[2]));
         createView.getOutput(service.create(product));
         AppStarter.startApp();
     }
@@ -61,8 +61,8 @@ public class ProductController {
 
     public void update() {
         Map<String, String> data = updateView.getData();
-        Product product = new Product(Long.parseLong(data.get("id")),
-                data.get("name"), data.get("quota"), data.get("price"));
+        Product product = new Product(Long.parseLong(data.get("id")), data.get("name"),
+                Double.parseDouble(data.get("quota")), Double.parseDouble(data.get("price")));
         updateView.getOutput(service.update(product));
         AppStarter.startApp();
     }

@@ -87,6 +87,6 @@ public class Product {
         return "id - " + this.getId() +
                 ", " + this.getName() +
                 " " + this.getQuota() +
-                ", phone: " + this.getPrice() + "\n";
+                ", price: " + this.getPrice() + "\n";
     }
 }
