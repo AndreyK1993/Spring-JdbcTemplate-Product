@@ -5,7 +5,7 @@ public final class Constants {
     private Constants() {
     }
 
-    public final static String PHONE_ERR_MSG = "Wrong phone.";
+    public final static String PRICE_ERR_MSG = "Wrong price.";
     public final static String ID_ERR_MSG = "Wrong id.";
 
     public final static String DATA_ABSENT_MSG = "\n>> No data!";

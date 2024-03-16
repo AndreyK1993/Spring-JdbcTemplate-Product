@@ -1,11 +1,11 @@
 package app.service;
 
-import app.entity.Contact;
-import app.exceptions.ContactDataException;
-import app.repository.impl.ContactRepository;
+import app.entity.Product;
+import app.exceptions.ProductDataException;
+import app.repository.impl.ProductRepository;
 import app.utils.Constants;
 import app.utils.IdValidator;
-import app.utils.PhoneValidator;
+import app.utils.PriceValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,26 +16,26 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
-public class ContactService {
+public class ProductService {
 
     @Autowired
-    Contact contact;
+    Product product;
     @Autowired
-    ContactRepository repository;
+    ProductRepository repository;
 
     Map<String, String> errors = new HashMap<>();
 
-    public String create(Contact contact) {
-        validateData(contact);
+    public String create(Product product) {
+        validateData(product);
         if (!errors.isEmpty()) {
             try {
-                throw new ContactDataException("Check inputs", errors);
-            } catch (ContactDataException e) {
+                throw new ProductDataException("Check inputs", errors);
+            } catch (ProductDataException e) {
                 return e.getErrors(errors);
             }
         }
 
-        if (repository.create(contact)) {
+        if (repository.create(product)) {
             return Constants.DATA_INSERT_MSG;
         } else {
             return Constants.SMTH_WRONG_MSG;
@@ -43,11 +43,11 @@ public class ContactService {
     }
 
     public String getAll() {
-        Optional<List<Contact>> optional = repository.fetchAll();
+        Optional<List<Product>> optional = repository.fetchAll();
         if (optional.isPresent()) {
             AtomicInteger count = new AtomicInteger(0);
             StringBuilder stringBuilder = new StringBuilder();
-            List<Contact> list = optional.get();
+            List<Product> list = optional.get();
             list.forEach((contact) ->
                     stringBuilder.append(count.incrementAndGet())
                             .append(") ")
@@ -61,34 +61,34 @@ public class ContactService {
         validateId(id);
         if (!errors.isEmpty()) {
             try {
-                throw new ContactDataException("Check inputs", errors);
-            } catch (ContactDataException e) {
+                throw new ProductDataException("Check inputs", errors);
+            } catch (ProductDataException e) {
                 return e.getErrors(errors);
             }
         }
 
-        Optional<Contact> optional = repository.fetchById(Long.parseLong(id));
+        Optional<Product> optional = repository.fetchById(Long.parseLong(id));
         if (optional.isEmpty()) {
             return Constants.DATA_ABSENT_MSG;
         } else {
-            Contact contact = optional.get();
-            return contact.toString();
+            Product product = optional.get();
+            return product.toString();
         }
     }
 
-    public String update(Contact contact) {
-        validateData(contact);
-        validateId(String.valueOf(contact.getId()));
+    public String update(Product product) {
+        validateData(product);
+        validateId(String.valueOf(product.getId()));
         if (!errors.isEmpty()) {
             try {
-                throw new ContactDataException("Check inputs",
+                throw new ProductDataException("Check inputs",
                         errors);
-            } catch (ContactDataException e) {
+            } catch (ProductDataException e) {
                 return e.getErrors(errors);
             }
         }
 
-        if (repository.update(contact)) {
+        if (repository.update(product)) {
             return Constants.DATA_UPDATE_MSG;
         } else {
             return Constants.SMTH_WRONG_MSG;
@@ -99,27 +99,27 @@ public class ContactService {
         validateId(id);
         if (!errors.isEmpty()) {
             try {
-                throw new ContactDataException("Check inputs", errors);
-            } catch (ContactDataException e) {
+                throw new ProductDataException("Check inputs", errors);
+            } catch (ProductDataException e) {
                 return e.getErrors(errors);
             }
         }
 
-        contact.setId(Long.parseLong(id));
-        if (repository.delete(contact)) {
+        product.setId(Long.parseLong(id));
+        if (repository.delete(product)) {
             return Constants.DATA_DELETE_MSG;
         } else {
             return Constants.SMTH_WRONG_MSG;
         }
     }
 
-    private void validateData(Contact contact) {
-        if (contact.getFirstName().isEmpty())
+    private void validateData(Product product) {
+        if (product.getName().isEmpty())
             errors.put("first name", Constants.INPUT_REQ_MSG);
-        if (contact.getLastName().isEmpty())
+        if (product.getQuota().isEmpty())
             errors.put("last name", Constants.INPUT_REQ_MSG);
-        if (PhoneValidator.isPhoneValid(contact.getPhone()))
-            errors.put("phone", Constants.PHONE_ERR_MSG);
+        if (PriceValidator.isPriceValid(product.getPrice()))
+            errors.put("phone", Constants.PRICE_ERR_MSG);
     }
 
     private void validateId(String id) {

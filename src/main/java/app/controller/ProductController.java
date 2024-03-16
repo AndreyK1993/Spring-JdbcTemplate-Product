@@ -1,7 +1,7 @@
 package app.controller;
 
-import app.entity.Contact;
-import app.service.ContactService;
+import app.entity.Product;
+import app.service.ProductService;
 import app.utils.AppStarter;
 import app.utils.Constants;
 import app.view.*;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class ContactController {
+public class ProductController {
 
     @Autowired
     AppView menuView;
@@ -26,7 +26,7 @@ public class ContactController {
     @Autowired
     ProductDeleteView deleteView;
     @Autowired
-    ContactService service;
+    ProductService service;
 
 
     public void getOption() {
@@ -43,8 +43,8 @@ public class ContactController {
 
     public void create() {
         String[] data = createView.getData();
-        Contact contact = new Contact(data[0], data[1], data[2]);
-        createView.getOutput(service.create(contact));
+        Product product = new Product(data[0], data[1], data[2]);
+        createView.getOutput(service.create(product));
         AppStarter.startApp();
     }
 
@@ -61,9 +61,9 @@ public class ContactController {
 
     public void update() {
         Map<String, String> data = updateView.getData();
-        Contact contact = new Contact(Long.parseLong(data.get("id")),
-                data.get("firstName"), data.get("lastName"), data.get("phone"));
-        updateView.getOutput(service.update(contact));
+        Product product = new Product(Long.parseLong(data.get("id")),
+                data.get("name"), data.get("quota"), data.get("price"));
+        updateView.getOutput(service.update(product));
         AppStarter.startApp();
     }
 

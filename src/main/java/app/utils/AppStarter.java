@@ -1,7 +1,7 @@
 package app.utils;
 
 import app.conf.AppConfig;
-import app.controller.ContactController;
+import app.controller.ProductController;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class AppStarter {
@@ -11,8 +11,8 @@ public class AppStarter {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
-        ContactController contactController = context.getBean(ContactController.class);
-        contactController.getOption();
+        ProductController productController = context.getBean(ProductController.class);
+        productController.getOption();
 
         context.close();
     }
